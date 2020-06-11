@@ -8,6 +8,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/netinfo": "^5.9.2",
+    "aws-amplify": "^3.0.17",
+    "aws-amplify-react-native": "^4.2.0",
     "expo": "~37.0.3",
     "expo-splash-screen": "^0.2.3",
     "expo-updates": "~0.2.0",

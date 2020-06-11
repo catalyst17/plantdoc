@@ -1,0 +1,24 @@
+{
+    "trigger": true,
+    "modules": [
+        "verification-link"
+    ],
+    "parentResource": "plantdoctore91ba1d6",
+    "functionName": "plantdoctore91ba1d6CustomMessage",
+    "resourceName": "plantdoctore91ba1d6CustomMessage",
+    "parentStack": "auth",
+    "triggerEnvs": [
+        {
+            "key": "RESOURCENAME",
+            "value": "resourceName"
+        }
+    ],
+    "triggerDir": "/usr/local/lib/node_modules/@aws-amplify/cli/node_modules/amplify-category-auth/provider-utils/awscloudformation/utils/../triggers/CustomMessage",
+    "triggerTemplate": "CustomMessage.json.ejs",
+    "roleName": "plantdoctore91ba1d6CustomMessage",
+    "skipEdit": true,
+    "REDIRECTURL": "/",
+    "EMAILSUBJECT": "Confirm your Plant Doctor account!",
+    "EMAILMESSAGE": "Hello and welcome to our service. To finish the registration, confirm your email using the following link:",
+    "RESOURCENAME": "resourceName"
+}

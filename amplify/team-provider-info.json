@@ -1,0 +1,27 @@
+{
+    "plantdoc": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-plantdoctor-plantdoc-221808-authRole",
+            "UnauthRoleArn": "arn:aws:iam::737969560173:role/amplify-plantdoctor-plantdoc-221808-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::737969560173:role/amplify-plantdoctor-plantdoc-221808-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "amplify-plantdoctor-plantdoc-221808-deployment",
+            "UnauthRoleName": "amplify-plantdoctor-plantdoc-221808-unauthRole",
+            "StackName": "amplify-plantdoctor-plantdoc-221808",
+            "StackId": "arn:aws:cloudformation:us-east-1:737969560173:stack/amplify-plantdoctor-plantdoc-221808/3846b8c0-ab25-11ea-9c05-0aece6d977c1",
+            "AmplifyAppId": "dj0qxp65guio5"
+        },
+        "categories": {
+            "function": {
+                "plantdoctore91ba1d6CustomMessage": {
+                    "REDIRECTURL": "/",
+                    "EMAILSUBJECT": "Confirm your Plant Doctor account!",
+                    "EMAILMESSAGE": "Hello and welcome to our service. To finish the registration, confirm your email using the following link:"
+                }
+            },
+            "auth": {
+                "plantdoctore91ba1d6": {}
+            }
+        }
+    }
+}
