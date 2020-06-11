@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@react-native-community/netinfo": "^5.9.2",
+    "@react-native-community/picker": "^1.6.1",
     "aws-amplify": "^3.0.17",
     "aws-amplify-react-native": "^4.2.0",
     "expo": "~37.0.3",

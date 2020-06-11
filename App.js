@@ -1,34 +1,52 @@
 import * as React from 'react';
-import { Platform, StyleSheet, Text, SafeAreaView } from 'react-native';
+import { StyleSheet } from 'react-native';
 import Amplify, { Auth as AmplifyAuth } from 'aws-amplify'
 import config from './aws-exports'
-import { withAuthenticator } from 'aws-amplify-react-native'
+
+import Auth from './views/auth/Auth'
+import Initializing from './views/Initializing'
+import Main from './views/main/Home'
 
 Amplify.configure(config)
 
 class App extends React.Component {
-  async componentDidMount() {
-    const user = await AmplifyAuth.currentAuthenticatedUser()
-    console.log('user:', user)
+  state = {
+    currentView: 'initializing'
   }
 
-  signOut = () => {
-    AmplifyAuth.signOut()
-      .then(() => this.props.onStateChange('signedOut'))
-      .catch(err => console.log('err: ', err))
+  componentDidMount() {
+    this.checkAuth()
+  }
+
+  updateView = (currentView) => {
+    this.setState({ currentView })
+  }
+
+  checkAuth = async () => {
+    try {
+      const user = await AmplifyAuth.currentAuthenticatedUser()
+      console.log(user, ' is signed in')
+      this.setState({ currentView: 'main' })
+    } catch (err) {
+      console.log('user is not signed in')
+      this.setState({ currentView: 'auth' })
+    }
   }
 
   render() {
+    const { currentView } = this.state
+    console.log('currentView: ', currentView)
     return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Hello World</Text>
-        <Text onPress={this.signOut}>Sign Out</Text>
-      </SafeAreaView>
+      <>
+        { currentView === 'initializing' && <Initializing />}
+        { currentView === 'auth' && <Auth updateView={this.updateView} />}
+        { currentView === 'main' && <Main updateView={this.updateView} />}
+      </>
     )
   }
 }
 
-export default withAuthenticator(App);
+export default App;
 
 const styles = StyleSheet.create({
   container: {
