@@ -12,15 +12,8 @@
             "AmplifyAppId": "dj0qxp65guio5"
         },
         "categories": {
-            "function": {
-                "plantdoctore91ba1d6CustomMessage": {
-                    "REDIRECTURL": "/",
-                    "EMAILSUBJECT": "Confirm your Plant Doctor account!",
-                    "EMAILMESSAGE": "Hello and welcome to our service. To finish the registration, confirm your email using the following link:"
-                }
-            },
             "auth": {
-                "plantdoctore91ba1d6": {}
+                "plantdoctor5d61edf15d61edf1": {}
             }
         }
     }

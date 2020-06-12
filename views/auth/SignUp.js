@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
     height: 45,
     fontSize: 16,
     paddingHorizontal: 14,
-    fontFamily: 'SourceSansProRegular',
+    fontFamily: 'sans-serif',
     color: '#e2a45b'
   }
 })

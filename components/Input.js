@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 16,
     paddingHorizontal: 14,
-    fontFamily: 'SourceSansProRegular',
+    fontFamily: 'sans-serif',
     color: '#e2a45b'
   }
 })

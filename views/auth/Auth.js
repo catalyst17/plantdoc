@@ -43,7 +43,8 @@ class Auth extends React.Component {
           ) }
           { showSignUp && <SignUp toggleAuthType={this.toggleAuthType} /> }
           { showForgotPassword && <ForgotPassword toggleAuthType={this.toggleAuthType} /> }
-          <View style={{ position: 'absolute', bottom: 40 }}>
+
+          <View style={{ position:'relative', bottom: -15 }}>
             {
               showSignUp || showForgotPassword ? (
                 <Text style={styles.bottomMessage}>Already signed up? <Text
@@ -67,8 +68,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
-    paddingBottom: 40
+    alignItems: 'center'
   },  
   logo: {
     height: width / 2.5
@@ -76,17 +76,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 26,
     marginTop: 15,
-    fontFamily: 'SourceSansProSemiBold',
+    fontFamily: 'sans-serif-condensed',
     color: '#e19f51'
   },
   subtitle: {
     fontSize: 20,
     marginBottom: 20,
     color: 'rgba(0, 0, 0, .75)',
-    fontFamily: 'SourceSansProRegular',
+    fontFamily: 'sans-serif',
   },
   bottomMessage: {
-    fontFamily: 'SourceSansProRegular',
+    fontFamily: 'sans-serif',
     fontSize: 18
   },
   bottomMessageHighlight: {

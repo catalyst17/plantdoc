@@ -50,7 +50,7 @@ class SignIn extends Component {
         />
         <View style={styles.buttonContainer}>
           <TouchableHighlight onPress={this.showForgotPassword}>
-            <Text>Forget your password?</Text>
+            <Text>Forgot your password?</Text>
           </TouchableHighlight>
         </View>
       </View>

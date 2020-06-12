@@ -1,27 +1,11 @@
 {
 	"api": {},
 	"auth": {
-		"plantdoctore91ba1d6": {
+		"plantdoctor5d61edf15d61edf1": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
-			"dependsOn": [
-				{
-					"category": "function",
-					"resourceName": "plantdoctore91ba1d6CustomMessage",
-					"triggerProvider": "Cognito",
-					"attributes": [
-						"Arn",
-						"Name"
-					]
-				}
-			]
+			"dependsOn": []
 		}
 	},
-	"function": {
-		"plantdoctore91ba1d6CustomMessage": {
-			"build": true,
-			"providerPlugin": "awscloudformation",
-			"service": "Lambda"
-		}
-	}
+	"function": {}
 }
