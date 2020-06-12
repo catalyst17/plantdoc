@@ -1,6 +1,8 @@
 {
-    "resourceNameTruncated": "plantd5d61edf1",
-    "userPoolName": "plantdoctor5d61edf1_userpool_5d61edf1",
+    "identityPoolName": "plantdoce4bf2437_identitypool_e4bf2437",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "plantde4bf2437",
+    "userPoolName": "plantdoce4bf2437_userpool_e4bf2437",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -10,10 +12,10 @@
     ],
     "smsAuthenticationMessage": "Your authentication code is {####}",
     "smsVerificationMessage": "Your verification code is {####}",
-    "emailVerificationSubject": "Confirm your Plant Doctor account!",
-    "emailVerificationMessage": "Hello and welcome to our service. To finish the registration, confirm your email using this verification code: {####}!",
-    "defaultPasswordPolicy": true,
-    "passwordPolicyMinLength": "6",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
         "email",
@@ -23,25 +25,16 @@
     "userpoolClientGenerateSecret": true,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
-        "email",
-        "gender",
-        "name"
+        "email"
     ],
     "userpoolClientReadAttributes": [
-        "email",
-        "gender",
-        "name"
+        "email"
     ],
-    "userpoolClientLambdaRole": "plantd5d61edf1_userpoolclient_lambda_role",
-    "userpoolClientSetAttributes": true,
-    "useDefault": "manual",
-    "authSelections": "userPoolOnly",
-    "resourceName": "plantdoctor5d61edf15d61edf1",
-    "userPoolGroups": false,
-    "adminQueries": false,
-    "triggers": "{}",
-    "hostedUI": false,
-    "userPoolGroupList": [],
+    "userpoolClientLambdaRole": "plantde4bf2437_userpoolclient_lambda_role",
+    "userpoolClientSetAttributes": false,
+    "sharedId": "e4bf2437",
+    "resourceName": "plantdoce4bf2437",
+    "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
             "AuthRole",
@@ -54,6 +47,9 @@
             "Arn"
         ]
     },
+    "useDefault": "default",
+    "triggers": "{}",
+    "userPoolGroupList": [],
     "parentStack": {
         "Ref": "AWS::StackId"
     },

@@ -1,11 +1,9 @@
 {
-	"api": {},
 	"auth": {
-		"plantdoctor5d61edf15d61edf1": {
+		"plantdoce4bf2437": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []
 		}
-	},
-	"function": {}
+	}
 }

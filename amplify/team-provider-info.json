@@ -1,19 +1,19 @@
 {
     "plantdoc": {
         "awscloudformation": {
-            "AuthRoleName": "amplify-plantdoctor-plantdoc-221808-authRole",
-            "UnauthRoleArn": "arn:aws:iam::737969560173:role/amplify-plantdoctor-plantdoc-221808-unauthRole",
-            "AuthRoleArn": "arn:aws:iam::737969560173:role/amplify-plantdoctor-plantdoc-221808-authRole",
+            "AuthRoleName": "amplify-plantdoc-plantdoc-183441-authRole",
+            "UnauthRoleArn": "arn:aws:iam::737969560173:role/amplify-plantdoc-plantdoc-183441-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::737969560173:role/amplify-plantdoc-plantdoc-183441-authRole",
             "Region": "us-east-1",
-            "DeploymentBucketName": "amplify-plantdoctor-plantdoc-221808-deployment",
-            "UnauthRoleName": "amplify-plantdoctor-plantdoc-221808-unauthRole",
-            "StackName": "amplify-plantdoctor-plantdoc-221808",
-            "StackId": "arn:aws:cloudformation:us-east-1:737969560173:stack/amplify-plantdoctor-plantdoc-221808/3846b8c0-ab25-11ea-9c05-0aece6d977c1",
-            "AmplifyAppId": "dj0qxp65guio5"
+            "DeploymentBucketName": "amplify-plantdoc-plantdoc-183441-deployment",
+            "UnauthRoleName": "amplify-plantdoc-plantdoc-183441-unauthRole",
+            "StackName": "amplify-plantdoc-plantdoc-183441",
+            "StackId": "arn:aws:cloudformation:us-east-1:737969560173:stack/amplify-plantdoc-plantdoc-183441/556329b0-ac98-11ea-a715-1221171ce649",
+            "AmplifyAppId": "d3vylp1ewmbglg"
         },
         "categories": {
             "auth": {
-                "plantdoctor5d61edf15d61edf1": {}
+                "plantdoce4bf2437": {}
             }
         }
     }
