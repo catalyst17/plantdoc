@@ -31,7 +31,7 @@ class Auth extends React.Component {
           <Image
             style={styles.logo}
             resizeMode='contain'
-            source={require("../../assets/amplify.png")}
+            source={require("../../assets/logo.png")}
           />
           <Text style={styles.title}>Plant Doctor</Text>
           <Text style={styles.subtitle}>React Native Auth Amplify</Text>

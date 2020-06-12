@@ -1,8 +1,8 @@
-![](hero.jpg)
+![](assets/logo.png)
 
 # Plant Doctor application based on the tutorial source code for "AWS Amplify React Native Authentication Starter".
 
-![](hero.png)
+![](assets/logo.png)
 
 ## This project includes:    
 - Real world auth flow using React Navigation
