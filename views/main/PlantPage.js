@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     marginTop: 0
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 25,
     color: 'rgba(0, 0, 0, .75)',
     fontFamily: 'sans-serif',
     marginTop: 10,
