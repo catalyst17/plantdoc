@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Tile } from 'react-native-elements';
 
 import { Auth } from 'aws-amplify'
+import { Tile } from 'react-native-elements';
 
 class PlantsTab extends React.Component {
 
