@@ -1,10 +1,22 @@
 import React, { Component } from 'react'
-import { View, Image, Text, StyleSheet, Alert, Button } from 'react-native'
+import { View, Image, Text, StyleSheet, Alert, Button, BackHandler } from 'react-native'
 // import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Auth } from 'aws-amplify'
 
-class PlantPage extends Component {
+class PlantPage extends Component {    
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+    
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+    
+    handleBackButtonClick = () => {
+        this.props.changeView();
+        return true;
+    }
 
   render() {
     console.log('props: ', this.props)

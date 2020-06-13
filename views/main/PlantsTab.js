@@ -11,6 +11,11 @@ class PlantsTab extends React.Component {
     plantSelected: false
   }
 
+  changeView = () => {
+    const { plantSelected } = this.state
+    this.setState({plantSelected: !plantSelected})
+  }
+
   componentDidMount() {
     this.setState({ plantSelected: false })
   }
@@ -20,7 +25,7 @@ class PlantsTab extends React.Component {
     console.log('props: ', this.props)
     return (
       <>
-        {plantSelected && <PlantPage />}
+        {plantSelected && <PlantPage changeView={this.changeView}/>}
 
         {!plantSelected && 
           <View style={styles.container}>
@@ -31,8 +36,8 @@ class PlantsTab extends React.Component {
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
                 imageProps={styles.image}
-                contentContainerStyle={styles.tile}
-                onPress={() => this.setState({plantSelected: true})}
+                containerStyle={styles.tile}
+                onPress={this.changeView}
               />
               {/* <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
@@ -61,8 +66,11 @@ const styles = StyleSheet.create({
     marginBottom: 10
   },
   tilesContainer: {
-    flexDirection:'row',
-    alignItems: "center"
+    flex: 1,
+    justifyContent: 'space-between',
+    padding: 5,
+    width: '90%',
+    flexDirection:'row'
   },
   tile: {
     width: '50%'
