@@ -1,0 +1,12 @@
+{
+    "permissions": {
+        "auth": {
+            "plantdocrnaf2b1310": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}
