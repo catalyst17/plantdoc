@@ -12,17 +12,16 @@ import { NavigationContainer } from '@react-navigation/native'
 const Tab = createMaterialBottomTabNavigator();
 
 class Home extends React.Component {
-  updateView = (currentView) => {
-    this.props.updateView(currentView)
-  }
-
+     
   render() {
     console.log('props: ', this.props)
     return (
       <NavigationContainer>
         <Tab.Navigator>
           <Tab.Screen name="My plants" component={PlantsTab} />
-          <Tab.Screen name="Settings" component={SettingsTab} />
+          <Tab.Screen name="Family">
+            {() => <SettingsTab updateView={this.props.updateView} />}  
+          </Tab.Screen>
         </Tab.Navigator>
       </NavigationContainer>
     )
