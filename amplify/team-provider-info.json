@@ -10,11 +10,6 @@
             "StackName": "amplify-plantdocrn-plantdoc-142403",
             "StackId": "arn:aws:cloudformation:us-east-1:778234658643:stack/amplify-plantdocrn-plantdoc-142403/7d7998c0-ad3e-11ea-bf29-12f0216d258f",
             "AmplifyAppId": "d2fe33x3ze2ioo"
-        },
-        "categories": {
-            "auth": {
-                "plantdocrnaf2b1310": {}
-            }
         }
     }
 }
