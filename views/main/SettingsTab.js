@@ -51,7 +51,7 @@ class SettingsTab extends React.Component {
 
   render() {
     const { family } = this.state
-    console.log(family)
+    console.log('family exists: ', family)
     return (
       <>
         { family === 'no' && 

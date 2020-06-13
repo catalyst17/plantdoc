@@ -1,5 +1,6 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { Tile } from 'react-native-elements';
 
 import { Auth } from 'aws-amplify'
 
@@ -9,8 +10,15 @@ class PlantsTab extends React.Component {
     console.log('props: ', this.props)
     return (
       <View style={styles.container}>
-        <Text>Hello from Home</Text>
-        <Text style={styles.link}>Here will be your plants...</Text>
+        <Text style={styles.subtitle}>My plants</Text>
+
+        <Tile
+          imageSrc={require('../../logo.png')}
+          title="Tomato"
+          contentContainerStyle={{ height: 30, alignItems:'center' }}
+        />
+        
+        
       </View>
     )
   }
@@ -19,14 +27,15 @@ class PlantsTab extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white'
+    marginTop: 75
   },
-  link: {
-    color: 'blue',
-    marginVertical: 5
-  }
+  subtitle: {
+    fontSize: 20,
+    color: 'rgba(0, 0, 0, .75)',
+    fontFamily: 'sans-serif',
+    marginBottom: 10
+  }  
 })
 
 export default PlantsTab
