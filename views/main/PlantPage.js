@@ -1,18 +1,30 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, BackHandler } from 'react-native'
 
 import { Auth } from 'aws-amplify'
 
-class PlantPage extends Component {
+class PlantPage extends Component {    
+    componentDidMount() {
+        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+    
+    componentWillUnmount() {
+        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+    }
+    
+    handleBackButtonClick = () => {
+        this.props.changeView();
+        return true;
+    }
 
-  render() {
-    console.log('props: ', this.props)
-    return (
-      <View style={styles.container}>
-        <Text style={styles.subtitle}>Tomato</Text>
-      </View>
-    )
-  }
+    render() {
+        console.log('props: ', this.props)
+        return (
+        <View style={styles.container}>
+            <Text style={styles.subtitle}>Tomato</Text>
+        </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
