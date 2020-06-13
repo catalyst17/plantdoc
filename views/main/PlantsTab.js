@@ -4,7 +4,7 @@ import { Tile } from 'react-native-elements';
 
 import { Auth } from 'aws-amplify'
 
-import { PlantPage } from './PlantPage'
+import PlantPage from './PlantPage'
 
 class PlantsTab extends React.Component {
   state = {
