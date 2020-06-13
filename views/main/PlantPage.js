@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 75
+    marginTop: '10%'
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 25,
     color: 'rgba(0, 0, 0, .75)',
     fontFamily: 'sans-serif',
     marginBottom: 10

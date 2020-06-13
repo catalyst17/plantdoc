@@ -106,13 +106,12 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 75
+    marginTop: '10%'
   },
   bottom: {
     flex: 1,
     justifyContent: 'flex-end',
-    width: Dimensions.get('window').width * 0.9,
-    marginBottom: 17
+    width: Dimensions.get('window').width * 0.9
   },
   button: {
     width: Dimensions.get('window').width * 0.9
@@ -121,7 +120,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: 'rgba(0, 0, 0, .75)',
     fontFamily: 'sans-serif',
-    marginBottom: 10
+    marginBottom: '3%'
   }
 })
 

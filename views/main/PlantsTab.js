@@ -35,15 +35,24 @@ class PlantsTab extends React.Component {
               <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
-                imageProps={styles.image}
                 containerStyle={styles.tile}
+                contentContainerStyle={styles.tileTitleContainer}
                 onPress={this.changeView}
               />
-              {/* <Tile
+              <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
-                contentContainerStyle={styles.tile}
-              /> */}
+                containerStyle={styles.tile}
+                contentContainerStyle={styles.tileTitleContainer}
+                onPress={this.changeView}
+              />
+              <Tile
+                imageSrc={require('../../assets/img/leaf.jpg')}
+                title="Tomato"
+                containerStyle={styles.tile}
+                contentContainerStyle={styles.tileTitleContainer}
+                onPress={this.changeView}
+              />
             </View>
             
             
@@ -57,28 +66,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 75
+    marginTop: '10%'
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 25,
     color: 'rgba(0, 0, 0, .75)',
     fontFamily: 'sans-serif',
-    marginBottom: 10
+    marginBottom: '2%'
   },
   tilesContainer: {
-    flex: 1,
     justifyContent: 'space-between',
     padding: 5,
-    width: '90%',
-    flexDirection:'row'
+    width: '100%',
+    flexDirection:'row',
+    flexWrap: 'wrap'
   },
   tile: {
-    width: '50%'
+    width: '49%',
+    aspectRatio: 1,
+    marginTop: '3%'
   },
-  image: {
-    width: 50,
-    height: 50
-  }  
+  tileTitleContainer: {
+    alignItems: 'center',
+    paddingTop: '0%',
+    paddingBottom: '0%'
+  } 
 })
 
 export default PlantsTab
