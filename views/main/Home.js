@@ -3,44 +3,34 @@ import { View, Text, StyleSheet } from 'react-native'
 
 import { Auth } from 'aws-amplify'
 
-class Home extends React.Component {
-  static navigationOptions = {
-    title: 'Home'
-  }
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs'
 
-  signOut = async () => {
-    try {
-      await Auth.signOut()
-      console.log('signed out')
-      this.props.updateView('auth')
-    } catch (err) {
-      console.log('error signing out...', err)
-    }
+import PlantsTab from './PlantsTab'
+import SettingsTab from './SettingsTab'
+import { NavigationContainer } from '@react-navigation/native'
+
+const Tab = createMaterialBottomTabNavigator();
+
+class Home extends React.Component {
+  updateView = (currentView) => {
+    this.props.updateView(currentView)
   }
 
   render() {
     console.log('props: ', this.props)
     return (
-      <View style={styles.container}>
-        <Text>Hello from Home</Text>
-        <Text onPress={() => this.props.navigation.navigate('Route2')} style={styles.link}>Go to Route 2</Text>
-        <Text onPress={this.signOut} style={styles.link}>Sign Out</Text>
-      </View>
+      <NavigationContainer>
+        <Tab.Navigator>
+          <Tab.Screen name="My plants" component={PlantsTab} />
+          <Tab.Screen name="Settings" component={SettingsTab} />
+        </Tab.Navigator>
+      </NavigationContainer>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'white'
-  },
-  link: {
-    color: 'blue',
-    marginVertical: 5
-  }
+  
 })
 
 export default Home

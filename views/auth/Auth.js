@@ -31,7 +31,7 @@ class Auth extends React.Component {
           <Image
             style={styles.logo}
             resizeMode='contain'
-            source={require("../../assets/logo.png")}
+            source={require("../../assets/amplify.png")}
           />
           <Text style={styles.title}>Plant Doctor</Text>
           <Text style={styles.subtitle}>React Native Auth Amplify</Text>
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },  
   logo: {
-    height: width / 2.5
+    height: width / 2
   },
   title: {
     fontSize: 26,

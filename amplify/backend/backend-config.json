@@ -1,6 +1,6 @@
 {
 	"auth": {
-		"plantdoce4bf2437": {
+		"plantdocrnaf2b1310": {
 			"service": "Cognito",
 			"providerPlugin": "awscloudformation",
 			"dependsOn": []
