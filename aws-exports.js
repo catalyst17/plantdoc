@@ -7,7 +7,14 @@ const awsmobile = {
     "aws_cognito_region": "us-east-1",
     "aws_user_pools_id": "us-east-1_881RYcqFQ",
     "aws_user_pools_web_client_id": "3b2slo8antk7a1c561j6qd03j5",
-    "oauth": {}
+    "oauth": {},
+    "aws_cloud_logic_custom": [
+        {
+            "name": "deceaseDetection",
+            "endpoint": "https://jwpj70crj0.execute-api.us-east-1.amazonaws.com/plantdoc",
+            "region": "us-east-1"
+        }
+    ]
 };
 
 

@@ -1,0 +1,41 @@
+{
+    "paths": [
+        {
+            "name": "/detect-decease",
+            "lambdaFunction": "lambdaDeceaseDetection",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
+        }
+    ],
+    "resourceName": "deceaseDetection",
+    "apiName": "deceaseDetection",
+    "functionArns": [
+        {
+            "lambdaFunction": "lambdaDeceaseDetection"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 0,
+        "authRoleName": "amplify-plantdocrn-plantdoc-142403-authRole",
+        "unAuthRoleName": "amplify-plantdocrn-plantdoc-142403-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "lambdaDeceaseDetection",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

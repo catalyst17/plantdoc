@@ -8,7 +8,8 @@ import PlantPage from './PlantPage'
 
 class PlantsTab extends React.Component {
   state = {
-    plantSelected: false
+    plantSelected: false,
+    plantId: '0'
   }
 
   changeView = () => {
@@ -21,11 +22,11 @@ class PlantsTab extends React.Component {
   }
 
   render() {
-    const { plantSelected } = this.state
+    const { plantSelected, plantId } = this.state
     console.log('props: ', this.props)
     return (
       <>
-        {plantSelected && <PlantPage changeView={this.changeView}/>}
+        {plantSelected && <PlantPage plantId={plantId} changeView={this.changeView}/>}
 
         {!plantSelected && 
           <View style={styles.container}>
@@ -37,21 +38,30 @@ class PlantsTab extends React.Component {
                 title="Tomato"
                 containerStyle={styles.tile}
                 contentContainerStyle={styles.tileTitleContainer}
-                onPress={this.changeView}
+                onPress={() => {
+                  this.setState({plantId: "tmt1"});
+                  this.changeView();
+                }}
               />
               <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
                 containerStyle={styles.tile}
                 contentContainerStyle={styles.tileTitleContainer}
-                onPress={this.changeView}
+                onPress={() => {
+                  this.setState({plantId: "tmt2"});
+                  this.changeView();
+                }}
               />
               <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
                 containerStyle={styles.tile}
                 contentContainerStyle={styles.tileTitleContainer}
-                onPress={this.changeView}
+                onPress={() => {
+                  this.setState({plantId: "tmt3"});
+                  this.changeView();
+                }}
               />
             </View>
             
