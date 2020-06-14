@@ -5,7 +5,10 @@ import time
 import argparse
 import json
 
+shadowState = None
+
 def handler(event, context):
+  global shadowState
   print('received event:')
   print(event)
   response = ''
@@ -13,8 +16,7 @@ def handler(event, context):
   msg = ''
   topic = ''
   if resource == '/hardware/sensors':
-    response = 'trigger sensor successfully'
-    topic = '$aws/things/thingName/shadow/get'
+    topic = '$aws/things/pi/shadow/get'
   elif resource == '/hardware/watering':
     response = 'trigger watering successfully'
     topic = 'rasp/control'
@@ -24,8 +26,14 @@ def handler(event, context):
     topic = 'rasp/control'
     msg = 'turn on camera'
 
+  print(topic)
+  print(msg)
   publishMessage(topic, msg)
-
+  if resource == '/hardware/sensors':
+    response = shadowState
+  
+  print(response)
+  
   return {
     'statusCode': 200,
     'headers': {
@@ -76,6 +84,7 @@ def publishMessage(topic, msg):
     myAWSIoTMQTTClient.publish(topic, messageJson, 1)
     print('Published topic %s: %s\n' % (topic, messageJson))
 
+    global shadowState
     if topic == "$aws/things/pi/shadow/get":
         myAWSIoTMQTTShadowClient = None
         myAWSIoTMQTTShadowClient = AWSIoTMQTTShadowClient("RaspberryLedSwitch")
@@ -95,21 +104,15 @@ def publishMessage(topic, msg):
         print("finish configuration")
         
         #get the shadow after started
-        deviceShadowHandler.shadowGet(customShadowCallback_Get, 60)
+        while shadowState == None:
+            print("Getting device status...\n")
+            deviceShadowHandler.shadowGet(customShadowCallback_Get, 50)
+            time.sleep(5)    
 
 def customShadowCallback_Get(payload, responseStatus, token):
+    global shadowState
     # print("responseStatus: " + responseStatus)
     # print("payload: " + payload)
     payloadDict = json.loads(payload)
-    # print(payloadDict)
-    return {
-      'statusCode': 200,
-      'headers': {
-          "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
-          'Access-Control-Allow-Origin': '*'
-      },
-      'body': json.dumps(payloadDict)
-    }
-
-
-publishMessage("$aws/things/pi/shadow/get", "")
+    shadowState = payloadDict
+  
