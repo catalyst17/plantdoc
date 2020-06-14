@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, Alert, Button, BackHandler } from 'react-native'
-import Amplify from 'aws-amplify';
+import Amplify, {API} from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 Amplify.configure(awsmobile);
 
 class PlantDoctor extends Component {    
   state = {
-    diseaseName: ""
+    diseaseName: "",
+    apiResponse: null
   }
   componentDidMount() {
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
@@ -21,6 +22,13 @@ class PlantDoctor extends Component {
     return true;
   }
     
+  async triggerCamera(){
+    const path = "/hardware/camera"; // you can specify the path
+    const apiResponse = await API.post("hardware" , path); //replace the API name
+    console.log('response:' + apiResponse);
+    this.setState({ apiResponse });
+  }
+
   render() {
     console.log('props: ', this.props)
     const {diseaseName} = this.state

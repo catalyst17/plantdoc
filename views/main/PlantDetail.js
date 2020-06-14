@@ -9,13 +9,13 @@ class PlantDetail extends Component {
   state = { 
     apiResponse: {
       "desired": {
-        "light": 100
+        "light": 0
       },
       "reported": {
-        "light": 20
+        "light": 0
       },
       "delta": {
-        "light": 100
+        "light": 0
       }
     }
   };
@@ -34,10 +34,10 @@ class PlantDetail extends Component {
   }
 
   async getSensorData(){
-    const path = "/hardware/sensor"; // you can specify the path
+    const path = "/hardware/sensors"; // you can specify the path
     const apiResponse = await API.post("hardware" , path); //replace the API name
     console.log('response:' + apiResponse);
-    // this.setState({ apiResponse });
+    this.setState({ apiResponse });
   }
   
   render() {
@@ -45,7 +45,7 @@ class PlantDetail extends Component {
     const apiResponse = JSON.parse(JSON.stringify(this.state.apiResponse))
     const desired = apiResponse.desired.light
     const reported = apiResponse.reported.light
-    // this.getSensorData()
+    this.getSensorData()
     return (
       <View style={styles.container}>
         <Text style={styles.subtitle}>Recommended Status</Text>

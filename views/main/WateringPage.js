@@ -43,7 +43,7 @@ class WateringPage extends Component {
               title="Watering"
               color="#3294e5"
             />
-            <Text>Response: {this.state.apiResponse && JSON.stringify(this.state.apiResponse)}</Text>
+            <Text>{this.state.apiResponse && JSON.stringify(this.state.apiResponse)}</Text>
         </View>
       </View>
     )

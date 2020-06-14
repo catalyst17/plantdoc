@@ -9,12 +9,8 @@ import PlantPage from './PlantPage'
 class PlantsTab extends React.Component {
   state = {
     plantSelected: false,
-<<<<<<< HEAD
-    plantId: '0'  
-=======
     plantId: '',
     apiResponse: null
->>>>>>> 7a36b8eff37a9cd7853423d030d26c4e828e2173
   }
 
   changeView = () => {
