@@ -46,7 +46,7 @@ def publishMessage(topic, msg):
     
     # AWS IoT Core endpoint. Need change some values to yours.
     host = "a10m8p7lt0j4xx-ats.iot.us-east-1.amazonaws.com"
-    port = 8883;
+    port = 8883
     # AWS IoT Root Certificate. Needn't change.
     rootCAPath = "AmazonRootCA1.pem"
     # Device private key. Need change to yours.
@@ -77,7 +77,7 @@ def publishMessage(topic, msg):
     print('Published topic %s: %s\n' % (topic, messageJson))
 
     if topic == "$aws/things/pi/shadow/get":
-        myAWSIoTMQTTShadowClient = None;
+        myAWSIoTMQTTShadowClient = None
         myAWSIoTMQTTShadowClient = AWSIoTMQTTShadowClient("RaspberryLedSwitch")
         myAWSIoTMQTTShadowClient.configureEndpoint(host, port)
         myAWSIoTMQTTShadowClient.configureCredentials(rootCAPath, privateKeyPath, certificatePath)

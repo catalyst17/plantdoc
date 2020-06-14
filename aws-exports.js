@@ -33,10 +33,6 @@ const awsmobile = {
     "aws_dynamodb_all_tables_region": "us-east-1",
     "aws_dynamodb_table_schemas": [
         {
-            "tableName": "Users-plantdoc",
-            "region": "us-east-1"
-        },
-        {
             "tableName": "Plants-plantdoc",
             "region": "us-east-1"
         }

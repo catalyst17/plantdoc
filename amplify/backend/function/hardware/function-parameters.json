@@ -7,14 +7,6 @@
                 "update",
                 "delete"
             ]
-        },
-        "storage": {
-            "usersTable": [
-                "create",
-                "read",
-                "update",
-                "delete"
-            ]
         }
     }
 }

@@ -13,14 +13,6 @@
 		"authplantdocrnaf2b1310UserPoolId": {
 			"Type": "String",
 			"Default": "authplantdocrnaf2b1310UserPoolId"
-		},
-		"storageusersTableName": {
-			"Type": "String",
-			"Default": "storageusersTableName"
-		},
-		"storageusersTableArn": {
-			"Type": "String",
-			"Default": "storageusersTableArn"
 		}
 	},
 	"Conditions": {
@@ -70,12 +62,6 @@
 						},
 						"AUTH_PLANTDOCRNAF2B1310_USERPOOLID": {
 							"Ref": "authplantdocrnaf2b1310UserPoolId"
-						},
-						"STORAGE_USERSTABLE_NAME": {
-							"Ref": "storageusersTableName"
-						},
-						"STORAGE_USERSTABLE_ARN": {
-							"Ref": "storageusersTableArn"
 						}
 					}
 				},
@@ -89,7 +75,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-plantdocrn-plantdoc-142403-deployment",
-					"S3Key": "amplify-builds/hardware-385a4e4e6354364e7054-build.zip"
+					"S3Key": "amplify-builds/hardware-4630314b3734454c4e45-build.zip"
 				}
 			}
 		},
@@ -292,39 +278,6 @@
 											{
 												"Ref": "authplantdocrnaf2b1310UserPoolId"
 											}
-										]
-									]
-								}
-							]
-						},
-						{
-							"Effect": "Allow",
-							"Action": [
-								"dynamodb:Put*",
-								"dynamodb:Create*",
-								"dynamodb:BatchWriteItem",
-								"dynamodb:Get*",
-								"dynamodb:BatchGetItem",
-								"dynamodb:List*",
-								"dynamodb:Describe*",
-								"dynamodb:Scan",
-								"dynamodb:Query",
-								"dynamodb:Update*",
-								"dynamodb:RestoreTable*",
-								"dynamodb:Delete*"
-							],
-							"Resource": [
-								{
-									"Ref": "storageusersTableArn"
-								},
-								{
-									"Fn::Join": [
-										"/",
-										[
-											{
-												"Ref": "storageusersTableArn"
-											},
-											"index/*"
 										]
 									]
 								}
