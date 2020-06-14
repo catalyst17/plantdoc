@@ -38,17 +38,23 @@ class SignUp extends Component {
     const { username, authCode } = this.state
     try {
       await Auth.confirmSignUp(username, authCode)
+      this.saveUser()
       this.props.toggleAuthType('showSignIn')
     } catch (err) {
       console.log('error signing up...', err)
     }
   }
-  
+
   // Create a new User in DB
   saveUser = async () => {
+    const {username, email, name, gender} = this.state
     let newUser = {
       body: {
-        "username": "anon"
+        "username": username,
+        "email": email,
+        "familyName": "NO_FAMILY",
+        "name": name,
+        "gender": gender
       }
     }
     const path = "/users";
@@ -108,7 +114,7 @@ class SignUp extends Component {
 
               <ActionButton
                 title='Sign Up'
-                onPress={this.saveUser}
+                onPress={this.signUp}
               />
             </Fragment>
           )

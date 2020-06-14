@@ -15,29 +15,36 @@ class PlantsTab extends React.Component {
 
   changeView = () => {
     const { plantSelected } = this.state
-    if (plantSelected) this.setState({plantId: ''})
+    if (plantSelected) {
+      this.setState({plantId: ''})
+      this.getPlants()
+    }
     this.setState({plantSelected: !plantSelected})
   }
 
   componentDidMount() {
     this.setState({ plantSelected: false, plantId: '' })
+    this.getPlants()
   }
 
-  // Create a new Plant (only tests for now)
-  async savePlant() {
-    let newNote = {
+  // Create a new User in DB
+  saveUser = async () => {
+    const {username, email, name, gender} = this.state
+    let newUser = {
       body: {
-        "NoteTitle": "My first note!",
-        "NoteContent": "This is so cool!",
-        "NoteId": this.state.noteId
+        "username": username,
+        "email": email,
+        "familyName": "NO_FAMILY",
+        "name": name,
+        "gender": gender
       }
     }
-    const path = "/Notes";
+    const path = "/users";
 
     // Use the API module to save the note to the database
     try {
-      const apiResponse = await API.put("NotesCRUD", path, newNote)
-      console.log("response from saving note: " + apiResponse);
+      const apiResponse = await API.put("UsersCRUD", path, newUser)
+      console.log("response from saving the user: " + apiResponse);
       this.setState({apiResponse});
     } catch (e) {
       console.log(e);
@@ -45,11 +52,11 @@ class PlantsTab extends React.Component {
   }
 
   // noteId is the primary key of the particular record you want to fetch
-  async getNote() {
-    const path = "/Notes/object/" + this.state.noteId;
+  async getPlants() {
+    const path = "/plants";
     try {
-      const apiResponse = await API.get("NotesCRUD", path);
-      console.log("response from getting note: " + apiResponse);
+      const apiResponse = await API.get("plants", path);
+      console.log("response from getting the list of plants: " + apiResponse);
       this.setState({apiResponse});
     } catch (e) {
       console.log(e);
@@ -58,7 +65,6 @@ class PlantsTab extends React.Component {
 
   render() {
     const { plantSelected, plantId } = this.state
-    console.log('props: ', this.props)
     return (
       <>
         {plantSelected && <PlantPage plantId={plantId} changeView={this.changeView}/>}
