@@ -7,17 +7,7 @@ Amplify.configure(awsmobile);
 
 class PlantDetail extends Component {    
   state = { 
-    apiResponse: {
-      "desired": {
-        "light": 0
-      },
-      "reported": {
-        "light": 0
-      },
-      "delta": {
-        "light": 0
-      }
-    }
+    apiResponse: {'state': {'desired': {'light': 0}, 'reported': {'light': 0}, 'delta': {'light': 0}}, 'metadata': {'desired': {'light': {'timestamp': 1592111080}}, 'reported': {'light': {'timestamp': 1592111080}}}, 'version': 16, 'timestamp': 1592154003, 'clientToken': 'ebcc30c5-5628-4efc-a607-198abfe5d1c2'}
   };
   
   componentDidMount() {
@@ -35,16 +25,18 @@ class PlantDetail extends Component {
 
   async getSensorData(){
     const path = "/hardware/sensors"; // you can specify the path
-    const apiResponse = await API.post("hardware" , path); //replace the API name
-    console.log('response:' + apiResponse);
+    var apiResponse = await API.post("hardware" , path); //replace the API name
+    // console.log(apiResponse);
     this.setState({ apiResponse });
   }
   
   render() {
     console.log('props: ', this.props)
+    
     const apiResponse = JSON.parse(JSON.stringify(this.state.apiResponse))
-    const desired = apiResponse.desired.light
-    const reported = apiResponse.reported.light
+    console.log(apiResponse);
+    const desired = apiResponse.state.desired.light
+    const reported = apiResponse.state.reported.light
     this.getSensorData()
     return (
       <View style={styles.container}>
