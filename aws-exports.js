@@ -13,6 +13,18 @@ const awsmobile = {
             "name": "deceaseDetection",
             "endpoint": "https://jwpj70crj0.execute-api.us-east-1.amazonaws.com/plantdoc",
             "region": "us-east-1"
+        },
+        {
+            "name": "UsersCRUD",
+            "endpoint": "https://qsmz2oly4e.execute-api.us-east-1.amazonaws.com/plantdoc",
+            "region": "us-east-1"
+        }
+    ],
+    "aws_dynamodb_all_tables_region": "us-east-1",
+    "aws_dynamodb_table_schemas": [
+        {
+            "tableName": "Users-plantdoc",
+            "region": "us-east-1"
         }
     ]
 };

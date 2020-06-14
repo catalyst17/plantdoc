@@ -1,0 +1,47 @@
+{
+    "paths": [
+        {
+            "name": "/users",
+            "lambdaFunction": "UsersCRUD",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/PUT",
+                    "/PATCH"
+                ]
+            }
+        }
+    ],
+    "resourceName": "UsersCRUD",
+    "apiName": "UsersCRUD",
+    "functionArns": [
+        {
+            "lambdaFunction": "UsersCRUD"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-plantdocrn-plantdoc-142403-authRole",
+        "unAuthRoleName": "amplify-plantdocrn-plantdoc-142403-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "UsersCRUD",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ],
+    "uuid": "66e0f002"
+}

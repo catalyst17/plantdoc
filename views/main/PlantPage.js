@@ -3,25 +3,51 @@ import { View, Image, Text, StyleSheet, Alert, Button, BackHandler } from 'react
 // import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Auth } from 'aws-amplify'
+import PlantDoctor from './PlantDoctor'
+import WateringPage from './WateringPage'
+import PlantDetail from './PlantDetail'
 
 class PlantPage extends Component {    
-    componentDidMount() {
-        BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
-    }
-    
-    componentWillUnmount() {
-        BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
-    }
-    
-    handleBackButtonClick = () => {
-        this.props.changeView();
-        return true;
-    }
+  state = {
+    currentView: 'plantPage',
+    plantSelected: true
+  }
+
+  updateView = (currentView) => {
+    this.setState({ currentView })
+  }
+
+  changeView = () => {
+    const { plantSelected } = this.state
+    this.setState({plantSelected: !plantSelected})
+  }
+
+  componentDidMount() {
+    this.setState({ plantSelected: false })
+  }
+  
+  componentDidMount() {
+      BackHandler.addEventListener('hardwareBackPress', this.handleBackButtonClick);
+  }
+  
+  componentWillUnmount() {
+      BackHandler.removeEventListener('hardwareBackPress', this.handleBackButtonClick);
+  }
+  
+  handleBackButtonClick = () => {
+      this.props.changeView();
+      return true;
+  }
     
   render() {
     console.log('props: ', this.props)
-    alert(this.props.plantId);
+    // alert(this.props.plantId);
+    const { currentView } = this.state
+    console.log('currentView: ', currentView)
     return (
+      <>
+    
+      { currentView === 'plantPage' && 
       <View style={styles.container}>
         <Image
           style={styles.plantImage}
@@ -33,21 +59,30 @@ class PlantPage extends Component {
         <View style={styles.btnGroup}>
           <View style={styles.btn}>
             <Button
-              onPress={() => Alert.alert('Plant detail pressed')}
+              onPress={() => {
+                this.setState({plantId: "tmt1"});
+                this.setState({ currentView: 'plantDetail'})
+              }}
               title="Plant Detail"
               color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
             <Button
-              onPress={() => Alert.alert('Plant doctor pressed')}
+              onPress={() => {
+                this.setState({plantId: "tmt1"});
+                this.setState({ currentView: 'plantDoctor' })
+              }}
               title="Plant Doctor"
               color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
             <Button 
-              onPress={() => Alert.alert('Watering pressed')}
+              onPress={() => {
+                this.setState({plantId: "tmt1"});
+                this.setState({ currentView: 'plantWatering'})
+              }}
               title="Watering"
               color="#3294e5"
             />
@@ -68,8 +103,14 @@ class PlantPage extends Component {
           </View>
         </View>
       </View>
+      }
+      { currentView === 'plantDoctor' && <PlantDoctor updateView={this.updateView} />}
+      { currentView === 'plantWatering' && <WateringPage updateView={this.updateView} />}
+      { currentView === 'plantDetail' && <PlantDetail updateView={this.updateView} />}
+      </>
     )
   }
+  
 }
 
 const styles = StyleSheet.create({

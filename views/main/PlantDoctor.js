@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image, Text, StyleSheet, Alert, Button, BackHandler } from 'react-native'
-import Amplify, { API } from 'aws-amplify';
+import Amplify from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 Amplify.configure(awsmobile);
 
@@ -17,14 +17,14 @@ class PlantDoctor extends Component {
   }
   
   handleBackButtonClick = () => {
-      this.props.changeView();
-      return true;
+    this.props.updateView("plantPage");
+    return true;
   }
     
   render() {
     console.log('props: ', this.props)
     const {diseaseName} = this.state
-    alert(this.props.plantId);
+
     return (
       <View style={styles.container}>
         <Image
