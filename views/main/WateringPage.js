@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Image, Text, StyleSheet, Alert, Button, BackHandler} from 'react-native'
+import { View, Image, Text, StyleSheet, Alert, Button, BackHandler, ToastAndroid} from 'react-native'
 import { WebView } from 'react-native-webview'
 import Amplify, {API} from 'aws-amplify';
 import awsmobile from '../../aws-exports';
@@ -21,11 +21,16 @@ class WateringPage extends Component {
     return true;
   }
 
+  showToast(msg){
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
+  };
+
   async triggerWaterMotor(){
     const path = "/hardware/watering"; // you can specify the path
     const apiResponse = await API.post("hardware" , path); //replace the API name
     console.log('response:' + apiResponse);
     this.setState({ apiResponse });
+    this.showToast(apiResponse);
   }
   
   render() {
@@ -43,7 +48,6 @@ class WateringPage extends Component {
               title="Watering"
               color="#3294e5"
             />
-            <Text>{this.state.apiResponse && JSON.stringify(this.state.apiResponse)}</Text>
         </View>
       </View>
     )
@@ -53,9 +57,8 @@ class WateringPage extends Component {
 const styles = StyleSheet.create({
   view: {
     // alignSelf: 'stretch',
-    width: 200,
-    height: 200,
-    marginTop: 30
+    width: '100%',
+    height: 300,
   },
   container: {
     flex: 1,
