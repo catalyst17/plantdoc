@@ -10,7 +10,7 @@ class PlantsTab extends React.Component {
   state = {
     plantSelected: false,
     plantId: '',
-    plantsArray: null
+    plantsArray: []
   }
 
   changeView = () => {
@@ -37,7 +37,7 @@ class PlantsTab extends React.Component {
     }
     try {
       const plantsArray = await API.post("plants", path, userInfo);
-      console.log("response from getting the list of plants: " + plantsArray);
+      console.log("response from getting the list of plants: ", plantsArray);
       this.setState({plantsArray});
     } catch (e) {
       console.log(e);
@@ -45,48 +45,37 @@ class PlantsTab extends React.Component {
   }
 
   render() {
-    const { plantSelected, plantId } = this.state
+    const { plantSelected, plantId, plantsArray } = this.state
+    let tiles = <></>
+    if (plantsArray) {
+      tiles = plantsArray.map((plant) => (
+        <Tile
+          key={plant.plantId}
+          imageSrc={require('../../assets/img/leaf.jpg')}
+          title={plant.title}
+          containerStyle={styles.tile}
+          contentContainerStyle={styles.tileTitleContainer}
+          onPress={() => {
+            this.setState({plantId});
+            this.changeView();
+          }}
+        />
+      ))
+    }
+    
     return (
       <>
         {plantSelected && <PlantPage plantId={plantId} changeView={this.changeView}/>}
 
         {!plantSelected && 
+
           <View style={styles.container}>
+
             <Text style={styles.subtitle}>My plants</Text>
 
             <View style={styles.tilesContainer}>
-              <Tile
-                imageSrc={require('../../assets/img/leaf.jpg')}
-                title="Tomato"
-                containerStyle={styles.tile}
-                contentContainerStyle={styles.tileTitleContainer}
-                onPress={() => {
-                  this.setState({plantId: "tmt1"});
-                  this.changeView();
-                }}
-              />
-              <Tile
-                imageSrc={require('../../assets/img/leaf.jpg')}
-                title="Tomato"
-                containerStyle={styles.tile}
-                contentContainerStyle={styles.tileTitleContainer}
-                onPress={() => {
-                  this.setState({plantId: "tmt2"});
-                  this.changeView();
-                }}
-              />
-              <Tile
-                imageSrc={require('../../assets/img/leaf.jpg')}
-                title="Tomato"
-                containerStyle={styles.tile}
-                contentContainerStyle={styles.tileTitleContainer}
-                onPress={() => {
-                  this.setState({plantId: "tmt2"});
-                  this.changeView();
-                }}
-              />
+              {tiles}
             </View>
-            
             
           </View>}
       </>
