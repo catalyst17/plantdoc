@@ -2,30 +2,66 @@ import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Tile } from 'react-native-elements';
 
-import { Auth } from 'aws-amplify'
+import { API, Auth } from 'aws-amplify'
 
 import PlantPage from './PlantPage'
 
 class PlantsTab extends React.Component {
   state = {
-    plantSelected: false
+    plantSelected: false,
+    plantId: '',
+    apiResponse: null
   }
 
   changeView = () => {
     const { plantSelected } = this.state
+    if (plantSelected) this.setState({plantId: ''})
     this.setState({plantSelected: !plantSelected})
   }
 
   componentDidMount() {
-    this.setState({ plantSelected: false })
+    this.setState({ plantSelected: false, plantId: '' })
+  }
+
+  // Create a new Plant (only tests for now)
+  async savePlant() {
+    let newNote = {
+      body: {
+        "NoteTitle": "My first note!",
+        "NoteContent": "This is so cool!",
+        "NoteId": this.state.noteId
+      }
+    }
+    const path = "/Notes";
+
+    // Use the API module to save the note to the database
+    try {
+      const apiResponse = await API.put("NotesCRUD", path, newNote)
+      console.log("response from saving note: " + apiResponse);
+      this.setState({apiResponse});
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  // noteId is the primary key of the particular record you want to fetch
+  async getNote() {
+    const path = "/Notes/object/" + this.state.noteId;
+    try {
+      const apiResponse = await API.get("NotesCRUD", path);
+      console.log("response from getting note: " + apiResponse);
+      this.setState({apiResponse});
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
-    const { plantSelected } = this.state
+    const { plantSelected, plantId } = this.state
     console.log('props: ', this.props)
     return (
       <>
-        {plantSelected && <PlantPage changeView={this.changeView}/>}
+        {plantSelected && <PlantPage plantId={plantId} changeView={this.changeView}/>}
 
         {!plantSelected && 
           <View style={styles.container}>
@@ -37,21 +73,30 @@ class PlantsTab extends React.Component {
                 title="Tomato"
                 containerStyle={styles.tile}
                 contentContainerStyle={styles.tileTitleContainer}
-                onPress={this.changeView}
+                onPress={() => {
+                  this.setState({plantId: "tmt1"});
+                  this.changeView();
+                }}
               />
               <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
                 containerStyle={styles.tile}
                 contentContainerStyle={styles.tileTitleContainer}
-                onPress={this.changeView}
+                onPress={() => {
+                  this.setState({plantId: "tmt2"});
+                  this.changeView();
+                }}
               />
               <Tile
                 imageSrc={require('../../assets/img/leaf.jpg')}
                 title="Tomato"
                 containerStyle={styles.tile}
                 contentContainerStyle={styles.tileTitleContainer}
-                onPress={this.changeView}
+                onPress={() => {
+                  this.setState({plantId: "tmt2"});
+                  this.changeView();
+                }}
               />
             </View>
             

@@ -2,7 +2,7 @@ import React, { Fragment, Component } from 'react'
 import { View, StyleSheet } from 'react-native'
 
 import { Input, ActionButton } from '../../components'
-import { Auth } from 'aws-amplify'
+import { Auth, API } from 'aws-amplify'
 import { Picker } from '@react-native-community/picker'
 
 class SignUp extends Component {
@@ -13,7 +13,8 @@ class SignUp extends Component {
     name: '',
     gender: 'female',
     authCode: '',
-    stage: 0
+    stage: 0,
+    apiResponse: null
   }
 
   onChangeText = (key, value) => {
@@ -40,6 +41,25 @@ class SignUp extends Component {
       this.props.toggleAuthType('showSignIn')
     } catch (err) {
       console.log('error signing up...', err)
+    }
+  }
+  
+  // Create a new User in DB
+  saveUser = async () => {
+    let newUser = {
+      body: {
+        "username": "anon"
+      }
+    }
+    const path = "/users";
+
+    // Use the API module to save the note to the database
+    try {
+      const apiResponse = await API.put("UsersCRUD", path, newUser)
+      console.log("response from saving the user: " + apiResponse);
+      this.setState({apiResponse});
+    } catch (e) {
+      console.log(e);
     }
   }
 
@@ -88,7 +108,7 @@ class SignUp extends Component {
 
               <ActionButton
                 title='Sign Up'
-                onPress={this.signUp}
+                onPress={this.saveUser}
               />
             </Fragment>
           )

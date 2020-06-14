@@ -17,9 +17,10 @@ class PlantPage extends Component {
         this.props.changeView();
         return true;
     }
-
+    
   render() {
     console.log('props: ', this.props)
+    alert(this.props.plantId);
     return (
       <View style={styles.container}>
         <Image
@@ -38,6 +39,13 @@ class PlantPage extends Component {
             />
           </View>
           <View style={styles.btn}>
+            <Button
+              onPress={() => Alert.alert('Plant doctor pressed')}
+              title="Plant Doctor"
+              color="#3294e5"
+            />
+          </View>
+          <View style={styles.btn}>
             <Button 
               onPress={() => Alert.alert('Watering pressed')}
               title="Watering"
@@ -46,14 +54,14 @@ class PlantPage extends Component {
           </View>
           <View style={styles.btn}>
             <Button 
-              onPress={() => Alert.alert('Watering pressed')}
+              onPress={() => Alert.alert('History pressed')}
               title="History"
               color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
             <Button 
-              onPress={() => Alert.alert('Watering pressed')}
+              onPress={() => Alert.alert('Album pressed')}
               title="Album"
               color="#3294e5"
             />
