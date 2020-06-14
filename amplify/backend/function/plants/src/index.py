@@ -7,9 +7,9 @@ dynamodb = boto3.resource('dynamodb')
 
 def handler(event, context):
   print(event)
-  # if (event['httpMethod'] == 'GET'):
-  #   response = get_plants(event['body'])
-  #   print(response)
+  if (event['httpMethod'] == 'POST'):
+    response = get_plants(event['body'])
+    print(response)
   
   return {
     'statusCode': 200,
@@ -21,12 +21,22 @@ def handler(event, context):
   }
 
 
-def get_plants(user):
-    table_name = 'Users-plantdoc'
-    
-    table = dynamodb.Table(table_name)
-    
-    print("seems to be a new user")
-    response = table.put_item(Item=json.loads(user))
-        
-    return response
+def get_plants(body):
+  username = json.loads(body)['username']
+  print(username)
+  
+  users_table_name = 'Users-plantdoc'
+  users_table = dynamodb.Table(users_table_name)
+  
+  familyName = users_table.get_item(
+    Key={'username': username, 'familyName': 'NO_FAMILY'},
+    ProjectionExpression='familyName'
+  )
+  
+  print(familyName)
+  
+  plants_table_name = 'Plants-plantdoc'
+  
+  response = familyName
+      
+  return response

@@ -25,7 +25,7 @@ class App extends React.Component {
   checkAuth = async () => {
     try {
       const user = await AmplifyAuth.currentAuthenticatedUser()
-      console.log(user, ' is signed in')
+      console.log(user.getUsername(), 'is signed in')
       this.setState({ currentView: 'main' })
     } catch (err) {
       console.log('user is not signed in')

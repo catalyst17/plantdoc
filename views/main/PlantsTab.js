@@ -27,35 +27,16 @@ class PlantsTab extends React.Component {
     this.getPlants()
   }
 
-  // Create a new User in DB
-  saveUser = async () => {
-    const {username, email, name, gender} = this.state
-    let newUser = {
+  async getPlants() {
+    const user = await Auth.currentAuthenticatedUser()
+    const path = "/plants";
+    let userInfo = {
       body: {
-        "username": username,
-        "email": email,
-        "familyName": "NO_FAMILY",
-        "name": name,
-        "gender": gender
+        "username": user.getUsername()
       }
     }
-    const path = "/users";
-
-    // Use the API module to save the note to the database
     try {
-      const apiResponse = await API.put("UsersCRUD", path, newUser)
-      console.log("response from saving the user: " + apiResponse);
-      this.setState({apiResponse});
-    } catch (e) {
-      console.log(e);
-    }
-  }
-
-  // noteId is the primary key of the particular record you want to fetch
-  async getPlants() {
-    const path = "/plants";
-    try {
-      const apiResponse = await API.get("plants", path);
+      const apiResponse = await API.post("plants", path, userInfo);
       console.log("response from getting the list of plants: " + apiResponse);
       this.setState({apiResponse});
     } catch (e) {
