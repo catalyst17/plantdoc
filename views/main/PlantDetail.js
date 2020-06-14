@@ -7,7 +7,7 @@ Amplify.configure(awsmobile);
 
 class PlantDetail extends Component {    
   state = { 
-    apiResponse: {'state': {'desired': {'light': 0}, 'reported': {'light': 0}, 'delta': {'light': 0}}, 'metadata': {'desired': {'light': {'timestamp': 1592111080}}, 'reported': {'light': {'timestamp': 1592111080}}}, 'version': 16, 'timestamp': 1592154003, 'clientToken': 'ebcc30c5-5628-4efc-a607-198abfe5d1c2'}
+    apiResponse: {'state': {'desired': {'light': '-'}, 'reported': {'light': '-'}, 'delta': {'light': '-'}}, 'metadata': {'desired': {'light': {'timestamp': 1592111080}}, 'reported': {'light': {'timestamp': 1592111080}}}, 'version': 16, 'timestamp': 1592154003, 'clientToken': 'ebcc30c5-5628-4efc-a607-198abfe5d1c2'}
   };
   
   componentDidMount() {
