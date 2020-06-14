@@ -3,6 +3,8 @@ import { View, Image, Text, StyleSheet, Button, BackHandler, SafeAreaView, Scrol
 import Amplify, {API} from 'aws-amplify';
 import awsmobile from '../../aws-exports';
 import Constants from 'expo-constants';
+import { ActionButton } from '../../components'
+
 Amplify.configure(awsmobile);
 
 const causeRemedies = {
@@ -163,17 +165,15 @@ class PlantDoctor extends Component {
           </ScrollView>
         </View>
         <View style={styles.btn}>
-            <Button 
+            <ActionButton 
               onPress={this.triggerCamera.bind(this)}
               title="Take New Picture"
-              color="#3294e5"
             />
         </View>
         <View style={styles.btn}>
-            <Button 
+            <ActionButton 
               onPress={this.plantDiseaseDetect.bind(this)}
               title="Diagnose"
-              color="#3294e5"
             />
         </View>
     </View>

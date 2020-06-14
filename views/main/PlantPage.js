@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import { View, Image, Text, StyleSheet, Alert, Button, BackHandler } from 'react-native'
+import { View, Image, Text, StyleSheet, Alert, Button, BackHandler,TouchableHighlight, ScrollView } from 'react-native'
 // import { Button } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Auth } from 'aws-amplify'
 import PlantDoctor from './PlantDoctor'
 import WateringPage from './WateringPage'
 import PlantDetail from './PlantDetail'
+import PlantAlbum from './PlantAlbum'
+import { ActionButton } from '../../components'
 
 class PlantPage extends Component {    
   state = {
@@ -56,57 +58,60 @@ class PlantPage extends Component {
           }}
         />
         <Text style={styles.subtitle}>{this.props.plantName}</Text>
+        <View style={styles.scrollViewContainer}>
+          <ScrollView style={styles.scrollView}>
         <View style={styles.btnGroup}>
           <View style={styles.btn}>
-            <Button
+            <ActionButton
+              title="Plant Detail"
               onPress={() => {
                 this.setState({plantId: this.props.plantId});
                 this.setState({ currentView: 'plantDetail'})
               }}
-              title="Plant Detail"
-              color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
-            <Button
+            <ActionButton
               onPress={() => {
                 this.setState({plantId: this.props.plantId});
                 this.setState({ currentView: 'plantDoctor' })
               }}
               title="Plant Doctor"
-              color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
-            <Button 
+            <ActionButton
               onPress={() => {
                 this.setState({plantId: this.props.plantId});
                 this.setState({ currentView: 'plantWatering'})
               }}
               title="Watering"
-              color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
-            <Button 
+            <ActionButton
               onPress={() => Alert.alert('History pressed')}
               title="History"
-              color="#3294e5"
             />
           </View>
           <View style={styles.btn}>
-            <Button 
-              onPress={() => Alert.alert('Album pressed')}
+            <ActionButton
+              onPress={() => {
+                Alert.alert('Album pressed');
+                this.setState({ currentView: 'plantAlbum'});
+              }}
               title="Album"
-              color="#3294e5"
             />
           </View>
+        </View>
+        </ScrollView>
         </View>
       </View>
       }
       { currentView === 'plantDoctor' && <PlantDoctor updateView={this.updateView} />}
       { currentView === 'plantWatering' && <WateringPage updateView={this.updateView} />}
       { currentView === 'plantDetail' && <PlantDetail updateView={this.updateView} />}
+      { currentView === 'plantAlbum' && <PlantAlbum updateView={this.updateView} />}
       </>
     )
   }
@@ -119,16 +124,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 0
   },
+  scrollViewContainer: {
+    height: 30,
+    width: '100%',
+    flex: 1
+  },
+  scrollView: {
+    marginHorizontal: 0,
+    paddingHorizontal: 20,
+  },
   subtitle: {
     fontSize: 25,
     color: 'rgba(0, 0, 0, .75)',
     fontFamily: 'sans-serif',
     marginTop: 10,
-    marginBottom: 10
+    marginBottom: 5
   },
   plantImage: {
     width: '100%',
-    height: '45%',
+    height: '40%',
   },
   btnGroup: {
     width: '100%',
