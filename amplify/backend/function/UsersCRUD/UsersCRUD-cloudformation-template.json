@@ -21,6 +21,18 @@
 		"storageusersTableArn": {
 			"Type": "String",
 			"Default": "storageusersTableArn"
+		},
+		"functionUsersCRUDName": {
+			"Type": "String",
+			"Default": "functionUsersCRUDName"
+		},
+		"apiUsersCRUDApiName": {
+			"Type": "String",
+			"Default": "apiUsersCRUDApiName"
+		},
+		"apiUsersCRUDApiId": {
+			"Type": "String",
+			"Default": "apiUsersCRUDApiId"
 		}
 	},
 	"Conditions": {
@@ -76,6 +88,15 @@
 						},
 						"STORAGE_USERSTABLE_ARN": {
 							"Ref": "storageusersTableArn"
+						},
+						"FUNCTION_USERSCRUD_NAME": {
+							"Ref": "functionUsersCRUDName"
+						},
+						"API_USERSCRUD_APINAME": {
+							"Ref": "apiUsersCRUDApiName"
+						},
+						"API_USERSCRUD_APIID": {
+							"Ref": "apiUsersCRUDApiId"
 						}
 					}
 				},
@@ -89,7 +110,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-plantdocrn-plantdoc-142403-deployment",
-					"S3Key": "amplify-builds/UsersCRUD-712b6543566442736b31-build.zip"
+					"S3Key": "amplify-builds/UsersCRUD-6c635254373767727263-build.zip"
 				}
 			}
 		},

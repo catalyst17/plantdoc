@@ -4,13 +4,18 @@
             "name": "/users",
             "lambdaFunction": "UsersCRUD",
             "privacy": {
-                "private": true,
+                "protected": true,
                 "auth": [
                     "/POST",
                     "/GET",
                     "/PUT",
                     "/PATCH",
                     "/DELETE"
+                ],
+                "unauth": [
+                    "/POST",
+                    "/PUT",
+                    "/PATCH"
                 ]
             }
         }
@@ -24,7 +29,7 @@
     ],
     "privacy": {
         "auth": 1,
-        "unauth": 0,
+        "unauth": 1,
         "authRoleName": "amplify-plantdocrn-plantdoc-142403-authRole",
         "unAuthRoleName": "amplify-plantdocrn-plantdoc-142403-unauthRole"
     },
@@ -37,5 +42,6 @@
                 "Arn"
             ]
         }
-    ]
+    ],
+    "uuid": "66e0f002"
 }
