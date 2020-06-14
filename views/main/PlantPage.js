@@ -55,12 +55,12 @@ class PlantPage extends Component {
             uri: 'https://www.provenwinners.com/sites/provenwinners.com/files/imagecache/500x500/ifa_upload/lycopersicon_garden_treasure_mono.jpg'
           }}
         />
-        <Text style={styles.subtitle}>Tomato</Text>
+        <Text style={styles.subtitle}>{this.props.plantName}</Text>
         <View style={styles.btnGroup}>
           <View style={styles.btn}>
             <Button
               onPress={() => {
-                this.setState({plantId: "tmt1"});
+                this.setState({plantId: this.props.plantId});
                 this.setState({ currentView: 'plantDetail'})
               }}
               title="Plant Detail"
@@ -70,7 +70,7 @@ class PlantPage extends Component {
           <View style={styles.btn}>
             <Button
               onPress={() => {
-                this.setState({plantId: "tmt1"});
+                this.setState({plantId: this.props.plantId});
                 this.setState({ currentView: 'plantDoctor' })
               }}
               title="Plant Doctor"
@@ -80,7 +80,7 @@ class PlantPage extends Component {
           <View style={styles.btn}>
             <Button 
               onPress={() => {
-                this.setState({plantId: "tmt1"});
+                this.setState({plantId: this.props.plantId});
                 this.setState({ currentView: 'plantWatering'})
               }}
               title="Watering"

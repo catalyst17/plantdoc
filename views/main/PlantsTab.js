@@ -10,6 +10,7 @@ class PlantsTab extends React.Component {
   state = {
     plantSelected: false,
     plantId: '',
+    plantName: '',
     plantsArray: []
   }
 
@@ -45,7 +46,7 @@ class PlantsTab extends React.Component {
   }
 
   render() {
-    const { plantSelected, plantId, plantsArray } = this.state
+    const { plantSelected, plantId, plantsArray, plantName } = this.state
     let tiles = <></>
     if (plantsArray) {
       tiles = plantsArray.map((plant) => (
@@ -55,17 +56,24 @@ class PlantsTab extends React.Component {
           title={plant.title}
           containerStyle={styles.tile}
           contentContainerStyle={styles.tileTitleContainer}
+          titleStyle={styles.titleText}
           onPress={() => {
-            this.setState({plantId});
+            this.setState({plantId: plant.plantId, plantName: plant.title});
             this.changeView();
           }}
-        />
+        >
+          {plant.family !== 'NO_FAMILY' && 
+            <Text style={styles.captionText}>
+              from {plant.family}
+            </Text>
+          }
+        </Tile>
       ))
     }
     
     return (
       <>
-        {plantSelected && <PlantPage plantId={plantId} changeView={this.changeView}/>}
+        {plantSelected && <PlantPage plantId={plantId} plantName={plantName} changeView={this.changeView}/>}
 
         {!plantSelected && 
 
@@ -90,14 +98,14 @@ const styles = StyleSheet.create({
     marginTop: '10%'
   },
   subtitle: {
-    fontSize: 25,
+    fontSize: 27,
     color: 'rgba(0, 0, 0, .75)',
-    fontFamily: 'sans-serif',
+    fontFamily: 'sans-serif-condensed',
     marginBottom: '2%'
   },
   tilesContainer: {
     justifyContent: 'space-between',
-    padding: 5,
+    padding: '1%',
     width: '100%',
     flexDirection:'row',
     flexWrap: 'wrap'
@@ -111,6 +119,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: '0%',
     paddingBottom: '0%'
+  },
+  titleText: {
+    fontSize: 23,
+    color: 'rgba(0, 0, 0, .75)',
+    fontFamily: 'sans-serif',
+    marginBottom: '0%'
+  },
+  captionText: {
+    fontSize: 17,
+    color: 'rgba(0, 0, 0, .75)',
+    fontFamily: 'sans-serif'
   } 
 })
 
