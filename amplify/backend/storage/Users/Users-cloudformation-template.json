@@ -12,13 +12,6 @@
             "Type": "String"
         },
         
-        "sortKeyName": {
-            "Type": "String"
-        },
-        "sortKeyType": {
-            "Type": "String"
-        },
-        
         "tableName": {
             "Type": "String"
         }
@@ -55,11 +48,6 @@
                   {
                     "AttributeName": "username",
                     "KeyType": "HASH"
-                  }  , 
-                  
-                  {
-                    "AttributeName": "familyName",
-                    "KeyType": "RANGE"
                   } 
                   
                 ],
@@ -150,17 +138,6 @@
         "PartitionKeyType": {
             "Value": {
                 "Ref": "partitionKeyType"
-            }
-        },
-        
-        "SortKeyName": {
-            "Value": {
-                "Ref": "sortKeyName"
-            }
-        },
-        "SortKeyType": {
-            "Value": {
-                "Ref": "sortKeyType"
             }
         },
         

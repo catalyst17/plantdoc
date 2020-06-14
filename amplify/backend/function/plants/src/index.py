@@ -29,7 +29,7 @@ def get_plants(body):
   users_table = dynamodb.Table(users_table_name)
   
   familyName = users_table.get_item(
-    Key={'username': username, 'familyName': 'NO_FAMILY'},
+    Key={'username': username},
     ProjectionExpression='familyName'
   )
   

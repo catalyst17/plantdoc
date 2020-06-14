@@ -29,12 +29,6 @@
             ]
         },
         "storage": {
-            "usersTable": [
-                "create",
-                "read",
-                "update",
-                "delete"
-            ],
             "Plants": [
                 "create",
                 "read",
