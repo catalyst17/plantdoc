@@ -10,7 +10,7 @@ class PlantsTab extends React.Component {
   state = {
     plantSelected: false,
     plantId: '',
-    apiResponse: null
+    plantsArray: null
   }
 
   changeView = () => {
@@ -36,9 +36,9 @@ class PlantsTab extends React.Component {
       }
     }
     try {
-      const apiResponse = await API.post("plants", path, userInfo);
-      console.log("response from getting the list of plants: " + apiResponse);
-      this.setState({apiResponse});
+      const plantsArray = await API.post("plants", path, userInfo);
+      console.log("response from getting the list of plants: " + plantsArray);
+      this.setState({plantsArray});
     } catch (e) {
       console.log(e);
     }

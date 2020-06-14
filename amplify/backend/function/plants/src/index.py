@@ -17,26 +17,43 @@ def handler(event, context):
         "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
         'Access-Control-Allow-Origin': '*'
     },
-    'body': json.dumps("response")
+    'body': json.dumps(response)
   }
 
 
 def get_plants(body):
   username = json.loads(body)['username']
-  print(username)
-  
+
   users_table_name = 'Users-plantdoc'
   users_table = dynamodb.Table(users_table_name)
   
   familyName = users_table.get_item(
     Key={'username': username},
     ProjectionExpression='familyName'
-  )
-  
-  print(familyName)
-  
+  )['Item']['familyName']
+
   plants_table_name = 'Plants-plantdoc'
+  plants_table = dynamodb.Table(plants_table_name)
   
-  response = familyName
+  if (familyName == 'NO_FAMILY'):  
+    response = plants_table.query(
+        IndexName="ownerKey",
+        KeyConditionExpression=Key('owner').eq(username),
+        ProjectionExpression='#ownr, #fml, plantId, title',
+        ExpressionAttributeNames={
+            '#ownr': 'owner',
+            '#fml': 'family'
+        }
+    )
+  else:
+    response = plants_table.query(
+        IndexName="familyKey",
+        KeyConditionExpression=Key('family').eq(familyName),
+        ProjectionExpression='#ownr, #fml, plantId, title',
+        ExpressionAttributeNames={
+            '#ownr': 'owner',
+            '#fml': 'family'
+        }
+    )
       
-  return response
+  return response['Items']

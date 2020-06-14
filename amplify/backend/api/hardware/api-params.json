@@ -27,6 +27,20 @@
                     "/DELETE"
                 ]
             }
+        },
+        {
+            "name": "/hardware/camera",
+            "lambdaFunction": "hardware",
+            "privacy": {
+                "private": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ]
+            }
         }
     ],
     "resourceName": "hardware",
@@ -37,7 +51,7 @@
         }
     ],
     "privacy": {
-        "auth": 2,
+        "auth": 3,
         "unauth": 0,
         "authRoleName": "amplify-plantdocrn-plantdoc-142403-authRole",
         "unAuthRoleName": "amplify-plantdocrn-plantdoc-142403-unauthRole"
@@ -52,5 +66,5 @@
             ]
         }
     ],
-    "uuid": "81204cd4"
+    "uuid": "f349407f"
 }

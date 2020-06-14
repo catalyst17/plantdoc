@@ -35,6 +35,10 @@ const awsmobile = {
         {
             "tableName": "Plants-plantdoc",
             "region": "us-east-1"
+        },
+        {
+            "tableName": "Users-plantdoc",
+            "region": "us-east-1"
         }
     ]
 };

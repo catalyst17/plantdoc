@@ -75,7 +75,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-plantdocrn-plantdoc-142403-deployment",
-					"S3Key": "amplify-builds/hardware-4630314b3734454c4e45-build.zip"
+					"S3Key": "amplify-builds/hardware-7a7a6a454f344b625346-build.zip"
 				}
 			}
 		},
