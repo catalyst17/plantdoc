@@ -18,12 +18,26 @@ const awsmobile = {
             "name": "UsersCRUD",
             "endpoint": "https://qsmz2oly4e.execute-api.us-east-1.amazonaws.com/plantdoc",
             "region": "us-east-1"
+        },
+        {
+            "name": "hardware",
+            "endpoint": "https://sld4v54bbg.execute-api.us-east-1.amazonaws.com/plantdoc",
+            "region": "us-east-1"
+        },
+        {
+            "name": "plants",
+            "endpoint": "https://zzykxcow90.execute-api.us-east-1.amazonaws.com/plantdoc",
+            "region": "us-east-1"
         }
     ],
     "aws_dynamodb_all_tables_region": "us-east-1",
     "aws_dynamodb_table_schemas": [
         {
             "tableName": "Users-plantdoc",
+            "region": "us-east-1"
+        },
+        {
+            "tableName": "Plants-plantdoc",
             "region": "us-east-1"
         }
     ]
