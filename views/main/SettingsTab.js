@@ -22,7 +22,7 @@ class SettingsTab extends React.Component {
   checkFamily = async () => {
     try {
       //const user = await AmplifyAuth.currentAuthenticatedUser()
-      this.setState({ family: 'no' })
+      this.setState({ family: 'yes' })
     } catch (err) {
       console.log('you should not see it')
     }
@@ -40,7 +40,6 @@ class SettingsTab extends React.Component {
 
   createFamily = async () => {
     const { familyName } = this.state
-    
     const user = await Auth.currentAuthenticatedUser()
     const path = "/plants";
     let userInfo = {
@@ -102,7 +101,16 @@ class SettingsTab extends React.Component {
 
         { family === 'yes' && 
             <KeyboardAvoidingView style={styles.container} behavior={Platform.Os == "ios" ? "padding" : "height"}>
-              
+                <Text style={styles.subtitle}>Here is your family:</Text>
+                    <Text style={styles.username}>catalyst</Text>
+                    <Text style={styles.name}>Arsen</Text>
+                  
+
+                  <View style={styles.bottom}>
+                    <ActionButton
+                      title='Sign Out'
+                      onPress={this.signOut} />
+                  </View>
             </KeyboardAvoidingView> }
       </>
     )
@@ -125,10 +133,21 @@ const styles = StyleSheet.create({
     width: Dimensions.get('window').width * 0.9
   },
   subtitle: {
-    fontSize: 20,
+    fontSize: 27,
     color: 'rgba(0, 0, 0, .75)',
     fontFamily: 'sans-serif',
-    marginBottom: '3%'
+    marginBottom: '3%',
+    paddingTop: '10%'
+  },
+  username: {
+    fontSize: 23,
+    color: 'rgba(0, 0, 0, .75)',
+    fontFamily: 'sans-serif'
+  },
+  name: {
+    fontSize: 20,
+    color: 'rgba(0, 0, 0, .75)',
+    fontFamily: 'sans-serif'
   }
 })
 
