@@ -7,7 +7,15 @@ Amplify.configure(awsmobile);
 
 class PlantDetail extends Component {    
   state = { 
-    apiResponse: {'state': {'desired': {'light': '-'}, 'reported': {'light': '-'}, 'delta': {'light': '-'}}, 'metadata': {'desired': {'light': {'timestamp': 1592111080}}, 'reported': {'light': {'timestamp': 1592111080}}}, 'version': 16, 'timestamp': 1592154003, 'clientToken': 'ebcc30c5-5628-4efc-a607-198abfe5d1c2'}
+    apiResponse: {'state': {
+      "desired": {
+        "humidity": "low",
+        "temperature": "24"
+      },
+      "reported": {
+        "humidity": "low",
+        "temperature": "26.5"
+      }}}
   };
   
   componentDidMount() {
@@ -35,17 +43,19 @@ class PlantDetail extends Component {
     
     const apiResponse = JSON.parse(JSON.stringify(this.state.apiResponse))
     console.log(apiResponse);
-    const desired = apiResponse.state.desired.light
-    const reported = apiResponse.state.reported.light
+    const desired_humidity = apiResponse.state.desired.humidity
+    const reported_humidity = apiResponse.state.reported.humidity
+    const desired_temperature = apiResponse.state.desired.temperature
+    const reported_temperature = apiResponse.state.reported.temperature
     this.getSensorData()
     return (
       <View style={styles.container}>
         <Text style={styles.subtitle}>Recommended Status</Text>
         <Text style={styles.paragraph}>Temperature: {desired}</Text>
-        <Text style={styles.paragraph}>Humidity: {desired}</Text>
+        <Text style={styles.paragraph}>Humidity: {desired_humidity}</Text>
         <Text style={styles.subtitle}>Reported Status</Text>
         <Text style={styles.paragraph}>Temperature: {reported}</Text>
-        <Text style={styles.paragraph}>Humidity: {reported}</Text>
+        <Text style={styles.paragraph}>Humidity: {reported_humidity}</Text>
       </View>
     )
   }
