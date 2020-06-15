@@ -75,7 +75,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "amplify-plantdocrn-plantdoc-142403-deployment",
-					"S3Key": "amplify-builds/lambdaDeceaseDetection-55697a41476852666561-build.zip"
+					"S3Key": "amplify-builds/lambdaDeceaseDetection-53717053436d444b512f-build.zip"
 				}
 			}
 		},

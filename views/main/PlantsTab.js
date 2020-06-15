@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, ImageURISource } from 'react-native'
 import { Tile } from 'react-native-elements';
 
 import { API, Auth, Storage } from 'aws-amplify'
@@ -45,30 +45,45 @@ class PlantsTab extends React.Component {
     }
   }
 
+  getPlantsPic = async (plantId) => {
+    let name = plantId + '/latest.jpg';
+    const access = { level: "public" };
+    let fileUrl = await Storage.get(name, access);
+    return fileUrl;
+  }
+
   render() {
     const { plantSelected, plantId, plantsArray, plantName } = this.state
     let tiles = <></>
     if (plantsArray) {
-      tiles = plantsArray.map((plant) => (
-        <Tile
-          key={plant.plantId}
-          imageSrc={require('../../assets/img/leaf.jpg')}
-          title={plant.title}
-          containerStyle={styles.tile}
-          contentContainerStyle={styles.tileTitleContainer}
-          titleStyle={styles.titleText}
-          onPress={() => {
-            this.setState({plantId: plant.plantId, plantName: plant.title});
-            this.changeView();
-          }}
-        >
-          {plant.family !== 'NO_FAMILY' && 
-            <Text style={styles.captionText}>
-              from {plant.family}
-            </Text>
-          }
-        </Tile>
-      ))
+      tiles = plantsArray.map((plant) => {
+        // (async () => {
+        //   let imgUrl = await this.getPlantsPic(plant.plantId)
+        //   console.log(imgUrl)
+        // })()
+        let imgUrl = 'https://plants142403-plantdoc.s3.amazonaws.com/public/' + plant.plantId + '/latest.jpg'
+        return (
+          <Tile
+            key={plant.plantId}
+            // imageSrc={require('../../assets/img/leaf.jpg')}
+            imageSrc={{uri: imgUrl}}
+            title={plant.title}
+            containerStyle={styles.tile}
+            contentContainerStyle={styles.tileTitleContainer}
+            titleStyle={styles.titleText}
+            onPress={() => {
+              this.setState({plantId: plant.plantId, plantName: plant.title});
+              this.changeView();
+            }}
+          >
+            {plant.family !== 'NO_FAMILY' && 
+              <Text style={styles.captionText}>
+                from {plant.family}
+              </Text>
+            }
+          </Tile>
+        )
+      })
     }
     
     return (

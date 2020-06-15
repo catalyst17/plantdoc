@@ -118,7 +118,7 @@ class PlantDoctor extends Component {
     ToastAndroid.show(msg, ToastAndroid.SHORT);
   };
 
-  async triggerCamera(){
+  async triggerCamera() {
     const path = "/hardware/camera"; // you can specify the path
     const apiResponse = await API.post("hardware" , path); //replace the API name
     console.log('response:' + apiResponse);
@@ -127,11 +127,18 @@ class PlantDoctor extends Component {
     this.showToast(apiResponse);
   }
 
+  getPlantsPic = async (plantId) => {
+    let name = plantId + '/latest.jpg';
+    const access = { level: "public" };
+    let fileUrl = await Storage.get(name, access);
+    return fileUrl;
+  }
+
   async plantDiseaseDetect(){
     const path = "/detect-decease"; // you can specify the path
     let imageUrl = {
       body: {
-        "url": "https://previews.123rf.com/images/atoss/atoss1812/atoss181200024/113032321-tomato-leaves-isolated.jpg"
+        "url": 'https://plants142403-plantdoc.s3.amazonaws.com/public/0qx23dfds37/latest.jpg'
       }
     }
     const diseaseName = await API.post("deceaseDetection" , path, imageUrl); //replace the API name
@@ -151,7 +158,7 @@ class PlantDoctor extends Component {
         <Image
           style={styles.plantImage}
           source={{
-            uri: 'https://previews.123rf.com/images/atoss/atoss1812/atoss181200024/113032321-tomato-leaves-isolated.jpg'
+            uri: 'https://plants142403-plantdoc.s3.amazonaws.com/public/0qx23dfds37/latest.jpg'
           }}
         />
         <Text style={styles.subtitle}>Tomato</Text>

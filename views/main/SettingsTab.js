@@ -40,13 +40,21 @@ class SettingsTab extends React.Component {
 
   createFamily = async () => {
     const { familyName } = this.state
-    // try {
-    //   await Auth.signIn(username, password)
-    //   console.log('successfully signed in')
-    //   this.props.updateView('main')
-    // } catch (err) {
-    //   console.log('error signing in...', err)
-    // }
+    
+    const user = await Auth.currentAuthenticatedUser()
+    const path = "/plants";
+    let userInfo = {
+      body: {
+        "username": user.getUsername()
+      }
+    }
+    try {
+      const plantsArray = await API.post("plants", path, userInfo);
+      console.log("response from getting the list of plants: ", plantsArray);
+      this.setState({plantsArray});
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   render() {
@@ -87,7 +95,7 @@ class SettingsTab extends React.Component {
 
               <View style={styles.bottom}>
                 <ActionButton
-                  title='F*ck go back'
+                  title='Go back'
                   onPress={() => this.setState({ family: 'no'})} />
               </View>
             </KeyboardAvoidingView> }

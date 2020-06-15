@@ -3,6 +3,8 @@ import { View, Image, Text, StyleSheet, Alert, Button, BackHandler, ToastAndroid
 import { WebView } from 'react-native-webview'
 import Amplify, {API} from 'aws-amplify';
 import awsmobile from '../../aws-exports';
+import { ActionButton } from '../../components'
+
 Amplify.configure(awsmobile);
 
 class WateringPage extends Component {    
@@ -39,14 +41,13 @@ class WateringPage extends Component {
     return (
       <View style={styles.container}>
         <View style={styles.view}>
-          <WebView source = {{uri: 'http://192.168.43.192:8080/?action=stream'}} />
+          <WebView source = {{uri: 'http://192.168.43.64:8080/?action=stream'}} />
         </View>
         <Text style={styles.subtitle}>Tomato</Text>
         <View style={styles.btn}>
-            <Button 
+            <ActionButton
               onPress={this.triggerWaterMotor.bind(this)}
               title="Watering"
-              color="#3294e5"
             />
         </View>
       </View>

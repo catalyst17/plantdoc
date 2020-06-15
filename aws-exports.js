@@ -40,7 +40,9 @@ const awsmobile = {
             "tableName": "Users-plantdoc",
             "region": "us-east-1"
         }
-    ]
+    ],
+    "aws_user_files_s3_bucket": "plants142403-plantdoc",
+    "aws_user_files_s3_bucket_region": "us-east-1"
 };
 
 

@@ -54,7 +54,7 @@ class PlantPage extends Component {
         <Image
           style={styles.plantImage}
           source={{
-            uri: 'https://www.provenwinners.com/sites/provenwinners.com/files/imagecache/500x500/ifa_upload/lycopersicon_garden_treasure_mono.jpg'
+            uri: 'https://plants142403-plantdoc.s3.amazonaws.com/public/' + this.props.plantId + '/latest.jpg'
           }}
         />
         <Text style={styles.subtitle}>{this.props.plantName}</Text>
