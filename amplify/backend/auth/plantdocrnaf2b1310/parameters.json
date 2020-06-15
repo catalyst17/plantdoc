@@ -1,6 +1,6 @@
 {
     "identityPoolName": "plantdocrnaf2b1310_identitypool_af2b1310",
-    "allowUnauthenticatedIdentities": true,
+    "allowUnauthenticatedIdentities": false,
     "resourceNameTruncated": "plantdaf2b1310",
     "userPoolName": "plantdocrnaf2b1310_userpool_af2b1310",
     "autoVerifiedAttributes": [

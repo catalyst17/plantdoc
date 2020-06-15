@@ -1,175 +1,179 @@
 {
-    "auth": {
-        "plantdocrnaf2b1310": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": []
-        }
-    },
-    "function": {
-        "lambdaDeceaseDetection": {
-            "build": true,
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda",
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "plantdocrnaf2b1310",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                }
-            ]
-        },
-        "UsersCRUD": {
-            "build": true,
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda",
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "plantdocrnaf2b1310",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "storage",
-                    "resourceName": "Users",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        },
-        "hardware": {
-            "build": true,
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda",
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "plantdocrnaf2b1310",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                }
-            ]
-        },
-        "plants": {
-            "build": true,
-            "providerPlugin": "awscloudformation",
-            "service": "Lambda",
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "plantdocrnaf2b1310",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "api",
-                    "resourceName": "deceaseDetection",
-                    "attributes": [
-                        "ApiName",
-                        "ApiId"
-                    ]
-                },
-                {
-                    "category": "api",
-                    "resourceName": "UsersCRUD",
-                    "attributes": [
-                        "ApiName",
-                        "ApiId"
-                    ]
-                },
-                {
-                    "category": "api",
-                    "resourceName": "hardware",
-                    "attributes": [
-                        "ApiName",
-                        "ApiId"
-                    ]
-                },
-                {
-                    "category": "storage",
-                    "resourceName": "Plants",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        }
-    },
-    "api": {
-        "deceaseDetection": {
-            "service": "API Gateway",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "lambdaDeceaseDetection",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        },
-        "UsersCRUD": {
-            "service": "API Gateway",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "UsersCRUD",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        },
-        "hardware": {
-            "service": "API Gateway",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "hardware",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        },
-        "plants": {
-            "service": "API Gateway",
-            "providerPlugin": "awscloudformation",
-            "dependsOn": [
-                {
-                    "category": "function",
-                    "resourceName": "plants",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        }
-    },
-    "storage": {
-        "Plants": {
-            "service": "DynamoDB",
-            "providerPlugin": "awscloudformation"
-        },
-        "Users": {
-            "service": "DynamoDB",
-            "providerPlugin": "awscloudformation"
-        }
-    }
+	"auth": {
+		"plantdocrnaf2b1310": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"function": {
+		"lambdaDeceaseDetection": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "plantdocrnaf2b1310",
+					"attributes": [
+						"UserPoolId"
+					]
+				}
+			]
+		},
+		"UsersCRUD": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "plantdocrnaf2b1310",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "Users",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"hardware": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "plantdocrnaf2b1310",
+					"attributes": [
+						"UserPoolId"
+					]
+				}
+			]
+		},
+		"plants": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "plantdocrnaf2b1310",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "deceaseDetection",
+					"attributes": [
+						"ApiName",
+						"ApiId"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "UsersCRUD",
+					"attributes": [
+						"ApiName",
+						"ApiId"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "hardware",
+					"attributes": [
+						"ApiName",
+						"ApiId"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "Plants",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	},
+	"api": {
+		"deceaseDetection": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "lambdaDeceaseDetection",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"UsersCRUD": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "UsersCRUD",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"hardware": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "hardware",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"plants": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "plants",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	},
+	"storage": {
+		"Plants": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"Users": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		},
+		"PlantsBucket": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation"
+		}
+	}
 }
