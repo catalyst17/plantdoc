@@ -1,59 +1,34 @@
-![](logo.png)
+# Plant Doctor application for the final project (IoT based on AWS) on the Cloud Programming course
+![Logo image](logo.png)
 
-# Plant Doctor application based on the tutorial source code for "AWS Amplify React Native Authentication Starter".
+The main purpose of our project is to give users an ability to have a complete history of their plants’ growth, providing periodical and on demand health reports. It could also provide help for planting different types of plants, given different temperature and humidity recommendations, automatic control of soil moisture and watering when needed. With our product the growth and appearance of plants will be observed, with the initiative to find out whether there are pests and diseases of plants, giving quick advice directly via notification.
 
-![](logo.png)
+### Functionality:
 
-## This project includes:    
-- Real world auth flow using React Navigation
-- ...
+- Image recognition of plant species, recording its suitable growth temperature, proper sunshine and water supply information
+- Detecting temperature, soil moisture, UV intensity
+- According to the recorded information, when detected values start to be not in the suitable range, sending the notification to the user
+- Automatic watering when soil humidity is too low
+- Daily checking of plant leaves via image recognition, to detect whether there are pests and diseases. If there is an anomaly, identifying the condition (lack of water, mold, rot, need to fertilize, insect bites, etc) and sending a message to the user
+- Making daily photos to record the growth of plants and store it in the app (to let the user enjoy the growth and flowering in the retrospect)
+- Getting the weather forecast information, such as the next day's weather is not suitable for plants (sudden cold, ultraviolet too strong), and inform the user and remind him to move the pot with the plant indoors and vice-versa _(not realized yet)_
+- Creating “families” of people living together to have common plants to look after
 
+### Main technologies used:
 
-## Setting up AWS services    
-If you do not have your AWS services already created, follow these steps. If you already have your services set up, just configure your aws-exports.js file.    
+- React Native (Expo)
+- AWS Lambda
+- Amazon Cognito
+- AWS IoT Core (for communication with RaspberryPi)
+- Amazon S3
+- Amazon Amplify
+- Amazon SageMaker
+- Amazon DynamoDB
+- Amazon Simple Notification Service
 
-1. From the root of the project, initialize the Amplify project    
+Architecture of the system:
+![Architecure image](architecture.png)
 
-```sh
-amplify init
-```
+Backend computation is done on AWS Lambda, serverless code stored in [/lambda](/lambda) is just for the reference.
 
-2. Create the resources in your account
-
-```sh
-amplify push
-```
-
-## Setting up the workong environment for React Native development
-
-1. Make sure you are on a new version of the AWS Amplify CLI to be sure you have multiple environment support.
-
-```sh
-npm install -g @aws-amplify/cli
-```
-
-2. clone the project    
-
-```sh
-git clone https://github.com/catalyst17/cloud_prog_final_amplifyRN.git
-```
-
-3. install dependencies using npm or yarn    
-
-```sh
-yarn || npm i
-```
-
-4. For iOS, install the pods:
-
-```sh
-cd ios
-pod install
-cd ..
-```
-
-5. Start project    
-
-```sh
-expo start
-```
+Our project proposal with more information & description can be found [here](https://docs.google.com/document/d/1pu7S9EIk3FHnIWsuC72eXmd70DJ1Apx0CWdgSiAhXG8/edit?usp=sharing).
