@@ -26,7 +26,7 @@ The main purpose of our project is to give users an ability to have a complete h
 - Amazon DynamoDB
 - Amazon Simple Notification Service
 
-Architecture of the system:
+### Architecture of the system:
 ![Architecure image](architecture.png)
 
 Backend computation is done on AWS Lambda, serverless code stored in [/lambda](/lambda) is just for the reference.
